@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Debug 1</title>
+    <style>
+      div {
+          border: 2px solid gray;
+          border-radius: 5px;
+          padding: 1%;
+          margin: auto;
+          width: 40%;
+        }
+    </style>
+  </head>
+  <body>
+    
+    <div><h3>Bugs javaScript</h3></div>
+    <div>
+        <p>Button 1: pop-up met tekst</p>
+        <input type="button" value="Button 1" id="button_1" />
+    </div>
+    <div>
+      <p>Button 2: huidige tijd uren minuten. Button 2 werkt als eerst op Button 1 is geklikt</p>
+      <input type="button" value="Button 2" id="button_2" />
+      <div id="mijnDiv">hier komt de tijd </div>
+    </div>
+    
+    
+    <script>
+        let button_1 = document.getElementsByName("button_1");
+        let button_2 = document.getElementById("Button_2");
+        let mijnDiv = document.getElementById("mijnDiv");
+        let datum = new Date();
+        let isButton_1Clicked = false;
+        function deTijd(){
+          mijnDiv.innerHTML = "het is nu: " + datum.getHours() + " uur en " + datum.getMinute() + " minuten";
+        }
+        
+        button_2.addEventListener('click',()=>{
+          if (isButton_1Clicked == "true"){
+              deTijd();
+              isButton_1Clicked = false;
+          }
+          
+        })
+        button_1.addEventListener('click',()=>{
+           isButton_1Clicked = true;
+           mijnDiv.innerHTML = "nu kun je Button 2 gebruiken";
+           window.alert("hallo wereld het is " + datum.getHour() + " uur");
+        })
+    </script>
+  </body>
+</html>
